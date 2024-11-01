@@ -1,0 +1,58 @@
+plugins {
+    id 'java'
+    id 'checkstyle'
+    id 'com.github.spotbugs' version '6.0.22'
+}
+
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+repositories {
+    mavenCentral()
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+def junitVersion = "5.11.0",
+    seleniumVersion = "4.25.0",
+    slf4jVersion = "2.0.16"
+
+checkstyle {
+    toolVersion = "10.12.4"
+}
+
+dependencies {
+    implementation(
+            "org.junit.jupiter:junit-jupiter:$junitVersion",
+            "org.seleniumhq.selenium:selenium-java:$seleniumVersion",
+            "com.google.inject:guice:7.0.0",
+            "org.assertj:assertj-core:3.26.3",
+            "com.puppycrawl.tools:checkstyle:10.18.1",
+            "org.jsoup:jsoup:1.18.1"
+
+    )
+
+    testImplementation(
+            "org.junit.jupiter:junit-jupiter:$junitVersion",
+            "org.seleniumhq.selenium:selenium-java:$seleniumVersion",
+            "org.slf4j:slf4j-simple:$slf4jVersion",
+            "org.apache.commons:commons-lang3:3.14.0",
+            "io.github.bonigarcia:webdrivermanager:5.9.2",
+    )
+
+    checkstyle "com.puppycrawl.tools:checkstyle:${checkstyle.toolVersion}"
+    checkstyle "group:artifact:version"
+}
+
+test {
+    useJUnitPlatform()
+    ignoreFailures = true
+    outputs.upToDateWhen { false }
+    testLogging.showStandardStreams = true
+    testLogging { events "passed", "skipped", "failed" }
+    systemProperty "file.encoding", "UTF-8"
+    systemProperty "baseUrl", "https://otus.ru/"
+    systemProperty("browser", "chrome")
+}

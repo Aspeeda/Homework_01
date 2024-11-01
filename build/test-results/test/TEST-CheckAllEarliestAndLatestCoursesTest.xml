@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CheckAllEarliestAndLatestCoursesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-01T09:40:57" hostname="LAP" time="15.883">
+  <properties/>
+  <testcase name="checkAllEarliestAndLatestCoursesTest()" classname="CheckAllEarliestAndLatestCoursesTest" time="15.883"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[нояб. 01, 2024 2:41:00 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 130, returning the closest version; found: 129; Please update to a Selenium version that supports CDP version 130
+]]></system-err>
+</testsuite>
